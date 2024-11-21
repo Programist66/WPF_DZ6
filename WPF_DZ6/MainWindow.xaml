@@ -1,0 +1,49 @@
+﻿<Window x:Class="WPF_DZ6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_DZ6"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding}" x:Name="ProductsList" VerticalContentAlignment="Top">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid HorizontalAlignment="Center" Columns="5"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Image Height="96" Source="{Binding Image}"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Name}"/>
+                        <TextBlock HorizontalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Count"/>
+                                    <Binding Path="Unit"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+                 </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Column="1">
+            <Button Padding="0 10 0 10" Margin="10 10 10 5" Click="Button_Add">
+                Добавить
+            </Button>
+            <Button Padding="0 10 0 10" Margin="10 5 10 5" Click="Button_Change">
+                Редактировать
+            </Button>
+            <Button Padding="0 10 0 10" Margin="10 5 10 5" Click="Button_Delete">
+                Удалить
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

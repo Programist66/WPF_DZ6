@@ -1,0 +1,59 @@
+﻿<Window x:Class="WPF_DZ6.ProductChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_DZ6"
+        mc:Ignorable="d"
+        Title="ProductChange" Height="500" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Image Grid.ColumnSpan="2" 
+                   Height="100" HorizontalAlignment="Center" 
+                   Source="{Binding Image}"
+                   x:Name="imageBox"/>
+            <Button Grid.Row="1" Grid.ColumnSpan="2" 
+                    HorizontalAlignment="Center" 
+                    Click="Button_ChoiseImage">
+                Выберите изображение...
+            </Button>
+            <Label Grid.Row="2">
+                Название
+            </Label>
+            <TextBox Text="{Binding Name}" Grid.Row="2" Grid.Column="1"/>
+            <Label Grid.Row="3">
+                Колличество
+            </Label>
+            <TextBox Text="{Binding Count}" Grid.Row="3" Grid.Column="1"/>
+            <Label Grid.Row="4">
+                Единицы измерения
+            </Label>
+            <ComboBox Grid.Row="4" Grid.Column="1" 
+                      ItemsSource="{Binding AllUnits}"
+                      SelectedItem="{Binding Unit}"/>
+        </Grid>
+        <UniformGrid Grid.Row="1" Rows="1">
+            <Button Margin="10 0 5 10" Click="Button_Cancel">
+                Отмена
+            </Button>
+            <Button Margin="5 0 10 10" Click="Button_Save">
+                Сохранить
+            </Button>
+        </UniformGrid>
+    </Grid>
+</Window>
